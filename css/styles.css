@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap');
+
+html {
+  font-size: 10px; /* For making it easier to use rem */
+}
+
+html,
+html * {
+  margin: 0;
+  padding: 0;
+
+  font-family: 'Open Sans', sans-serif;
+
+  box-sizing: border-box;
+}
+
+nav {
+  height: 50px;
+  background-color: #f7f7f7;
+}
+
+.nav__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav__title {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.nav__title--black {
+  color: #393939;
+}
+
+.nav__title--orange {
+  color: #f29643;
+}
