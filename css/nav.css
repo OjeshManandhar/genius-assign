@@ -143,7 +143,7 @@ nav {
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
   nav {
-    height: 50px;
+    min-height: 5rem;
   }
 
   .nav__container {
