@@ -89,6 +89,10 @@ nav {
   pointer-events: none;
 }
 
+.nav__placeholder .icon-search {
+  margin-right: 0.5rem;
+}
+
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
   .nav__search {

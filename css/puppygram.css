@@ -1,0 +1,34 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: 'puppygram';
+  src: url('./../assets/fonts/puppygram.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^='icon-']:before,
+[class*=' icon-']:before {
+  font-family: 'puppygram' !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-search:before {
+  content: '\61';
+}
+.icon-bell:before {
+  content: '\62';
+}
+.icon-plus-round:before {
+  content: '\63';
+}
+.icon-close-round:before {
+  content: '\64';
+}
