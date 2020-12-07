@@ -11,6 +11,11 @@
   display: none !important;
 }
 
+/* Color */
+.bg-white {
+  background-color: var(--white) !important;
+}
+
 /* Container */
 .container {
   margin: auto;

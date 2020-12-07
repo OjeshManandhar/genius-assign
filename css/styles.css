@@ -1,11 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap');
 
 :root {
+  --gray: #c4c4c4;
+  --white: #ffffff;
   --black: #393939;
   --orange: #f29643;
 }
 
 html {
+  min-width: 320px;
   font-size: 10px; /* For making it easier to use rem */
 }
 
@@ -17,6 +20,28 @@ html * {
   font-family: 'Open Sans', sans-serif;
 
   box-sizing: border-box;
+}
+
+.btn {
+  padding: 0.5rem 2.25rem;
+
+  font-weight: 600;
+  color: var(--white);
+
+  background-color: var(--orange);
+
+  border: none;
+  outline: none;
+  border-radius: 0.8rem;
+}
+
+.btn-large {
+  width: 100%;
+}
+
+.btn:hover,
+.btn:focus {
+  box-shadow: 0 0 0.8rem 0 var(--orange);
 }
 
 /* Small devices (landscape phones, 576px and up) */
