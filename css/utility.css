@@ -8,7 +8,7 @@
 
 /* Display */
 .d-none {
-  display: hidden !important;
+  display: none !important;
 }
 
 /* Container */
