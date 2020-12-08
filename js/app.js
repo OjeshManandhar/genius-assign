@@ -92,56 +92,70 @@ function createModal(itemContainer) {
   });
 }
 
-const gridContainer = document.querySelector('#grid');
+function renderItems() {
+  const gridContainer = document.querySelector('#grid');
 
-images.forEach(image => {
-  const itemContainer = document.createElement('div');
-  itemContainer.classList.add('grid__item-container');
-  gridContainer.appendChild(itemContainer);
+  // Remove previous items
+  while (gridContainer.firstChild) {
+    gridContainer.removeChild(gridContainer.firstChild);
+  }
 
-  const item = document.createElement('div');
-  item.classList.add('grid__item');
-  itemContainer.appendChild(item);
+  // Add new items
+  images.forEach(image => {
+    const itemContainer = document.createElement('div');
+    itemContainer.classList.add('grid__item-container');
+    gridContainer.appendChild(itemContainer);
 
-  const img = document.createElement('img');
-  img.src = image.src;
-  img.alt = image.title;
-  item.appendChild(img);
+    const item = document.createElement('div');
+    item.classList.add('grid__item');
+    itemContainer.appendChild(item);
 
-  const overlay = document.createElement('div');
-  overlay.classList.add('grid__overlay');
-  item.appendChild(overlay);
+    const img = document.createElement('img');
+    img.src = image.src;
+    img.alt = image.title;
+    item.appendChild(img);
 
-  const removeBtn = document.createElement('span');
-  removeBtn.classList.add('icon-close-round');
-  removeBtn.addEventListener('click', e => {
-    e.stopPropagation();
-    getDeleteConfirmation(result => {
-      if (result) {
-        console.log('Remove item:', image, image.id);
-      }
+    const overlay = document.createElement('div');
+    overlay.classList.add('grid__overlay');
+    item.appendChild(overlay);
+
+    const removeBtn = document.createElement('span');
+    removeBtn.classList.add('icon-close-round');
+    removeBtn.addEventListener('click', e => {
+      e.stopPropagation();
+
+      getDeleteConfirmation(result => {
+        if (result) {
+          const index = images.findIndex(i => i.id === image.id);
+          if (index !== -1) {
+            images.splice(index, 1);
+
+            renderItems();
+          }
+        }
+      });
+    });
+    overlay.appendChild(removeBtn);
+
+    setTimeout(() => createModal(itemContainer), 0);
+
+    // Show Modal
+    itemContainer.addEventListener('click', () => {
+      const modal = itemContainer.querySelector('.grid__modal');
+
+      modal.classList.remove('d-none');
+
+      setTimeout(() => {
+        modal.classList.add('grid__modal--show');
+
+        modal.style.top = 0;
+        modal.style.left = 0;
+        modal.style.width = '100%';
+        modal.style.height = '100%';
+      }, 0);
     });
   });
-  overlay.appendChild(removeBtn);
-
-  setTimeout(() => createModal(itemContainer), 0);
-
-  // Show Modal
-  itemContainer.addEventListener('click', () => {
-    const modal = itemContainer.querySelector('.grid__modal');
-
-    modal.classList.remove('d-none');
-
-    setTimeout(() => {
-      modal.classList.add('grid__modal--show');
-
-      modal.style.top = 0;
-      modal.style.left = 0;
-      modal.style.width = '100%';
-      modal.style.height = '100%';
-    }, 0);
-  });
-});
+}
 
 function adjustPosition() {
   /**
@@ -166,3 +180,5 @@ function adjustPosition() {
 }
 window.addEventListener('resize', adjustPosition);
 window.addEventListener('scroll', adjustPosition);
+
+renderItems();

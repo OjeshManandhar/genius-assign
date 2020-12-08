@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./css/utility.css" />
     <link rel="stylesheet" href="./css/nav.css" />
     <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/confirmation.css" />
   </head>
 
   <body>
@@ -53,6 +54,14 @@
     </main>
 
     <footer class="footer">Footer</footer>
+
+    <div id="confirmation" class="confirmation v-hidden">
+      <div class="confirmation__dialogue">
+        <div class="confirmation__msg">Are you sure?</div>
+        <button id="btn-true" class="btn btn--no-highlight">Yes, delete</button>
+        <button id="btn-false" class="btn">No</button>
+      </div>
+    </div>
 
     <script src="./js/utils.js"></script>
     <script src="./js/app.js"></script>

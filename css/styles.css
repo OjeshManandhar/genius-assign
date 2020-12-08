@@ -9,6 +9,7 @@
   --light-bg: #f7f7f7;
   --light-black: #414141;
   --secondary-text: #7f7f7f;
+  --btn-no-highlight: #6c757d;
   --black-50: rgba(0, 0, 0, 0.5);
 
   /* z-index */
@@ -58,13 +59,21 @@ body {
   border-radius: 0.8rem;
 }
 
-.btn-large {
+.btn--large {
   width: 100%;
+}
+
+.btn--no-highlight {
+  background-color: var(--btn-no-highlight);
 }
 
 .btn:hover,
 .btn:focus {
   box-shadow: 0 0 0.8rem 0 var(--orange);
+}
+
+.btn--no-highlight:hover {
+  box-shadow: 0 0 0.8rem 0 var(--btn-no-highlight);
 }
 
 /* Small devices (landscape phones, 576px and up) */
