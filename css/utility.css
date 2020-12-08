@@ -11,11 +11,6 @@
   display: none !important;
 }
 
-/* Position */
-.p-fixed {
-  position: fixed !important;
-}
-
 /* Color */
 .bg-white {
   background-color: var(--white) !important;
@@ -26,8 +21,6 @@
   margin: auto;
 
   width: 100%;
-
-  border: 1px solid red;
 }
 
 /* Small devices (landscape phones, 576px and up) */

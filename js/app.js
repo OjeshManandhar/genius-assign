@@ -22,34 +22,79 @@ uploadBtn.addEventListener('click', () => {
 // Image Grid
 const images = [
   {
+    id: 1,
     src: './assets/images/dog-1.jpg',
-    alt: 'Dog 1'
+    title: 'Dog 1',
+    description: 'Dog 1'
   },
   {
+    id: 2,
     src: './assets/images/dog-2.jpg',
-    alt: 'Dog 2'
+    title: 'Dog 2',
+    description: 'Dog 2'
   },
   {
+    id: 3,
     src: './assets/images/dog-3.jpg',
-    alt: 'Dog 3'
+    title: 'Dog 3',
+    description: 'Dog 3'
   },
   {
+    id: 4,
     src: './assets/images/dog-1.jpg',
-    alt: 'Dog 4'
+    title: 'Dog 4',
+    description: 'Dog 4'
   },
   {
+    id: 5,
     src: './assets/images/dog-2.jpg',
-    alt: 'Dog 5'
+    title: 'Dog 5',
+    description: 'Dog 5'
   },
   {
+    id: 6,
     src: './assets/images/dog-3.jpg',
-    alt: 'Dog 6'
+    title: 'Dog 6',
+    description: 'Dog 6'
   }
 ];
 
+function createModal(itemContainer) {
+  const modalContainer = document.createElement('div');
+  modalContainer.classList.add('grid__modal', 'd-none');
+  itemContainer.appendChild(modalContainer);
+
+  const parentPos = itemContainer.getBoundingClientRect();
+  modalContainer.style.top = parentPos.top + 'px';
+  modalContainer.style.left = parentPos.left + 'px';
+  modalContainer.style.width = parentPos.width + 'px';
+  modalContainer.style.height = parentPos.height + 'px';
+
+  // Hide Modal
+  modalContainer.addEventListener('click', e => {
+    e.stopPropagation();
+
+    modalContainer.classList.remove('grid__modal--show');
+
+    const parentPos = itemContainer.getBoundingClientRect();
+    modalContainer.style.top = parentPos.top + 'px';
+    modalContainer.style.left = parentPos.left + 'px';
+    modalContainer.style.width = parentPos.width + 'px';
+    modalContainer.style.height = parentPos.height + 'px';
+
+    /**
+     * Add d-none after transition is complete
+     * time must be same as the transition time
+     */
+    setTimeout(() => {
+      modalContainer.classList.add('d-none');
+    }, 500);
+  });
+}
+
 const gridContainer = document.querySelector('#grid');
 
-images.forEach((image, index) => {
+images.forEach(image => {
   const itemContainer = document.createElement('div');
   itemContainer.classList.add('grid__item-container');
   gridContainer.appendChild(itemContainer);
@@ -60,7 +105,7 @@ images.forEach((image, index) => {
 
   const img = document.createElement('img');
   img.src = image.src;
-  img.alt = image.alt;
+  img.alt = image.title;
   item.appendChild(img);
 
   const overlay = document.createElement('div');
@@ -69,49 +114,20 @@ images.forEach((image, index) => {
 
   const removeBtn = document.createElement('span');
   removeBtn.classList.add('icon-close-round');
-  removeBtn.addEventListener('click', () => {
-    console.log('Remove item:', image, index);
+  removeBtn.addEventListener('click', e => {
+    e.stopPropagation();
+    getDeleteConfirmation(result => {
+      if (result) {
+        console.log('Remove item:', image, image.id);
+      }
+    });
   });
   overlay.appendChild(removeBtn);
 
-  setTimeout(() => {
-    const modalContainer = document.createElement('div');
-    modalContainer.classList.add('grid__modal', 'd-none');
+  setTimeout(() => createModal(itemContainer), 0);
 
-    const parentPos = itemContainer.getBoundingClientRect();
-    modalContainer.style.top = parentPos.top + 'px';
-    modalContainer.style.left = parentPos.left + 'px';
-    modalContainer.style.width = parentPos.width + 'px';
-    modalContainer.style.height = parentPos.height + 'px';
-
-    modalContainer.addEventListener('click', e => {
-      // Hide Modal
-
-      e.stopPropagation();
-
-      modalContainer.classList.remove('grid__modal--show');
-
-      const parentPos = itemContainer.getBoundingClientRect();
-      modalContainer.style.top = parentPos.top + 'px';
-      modalContainer.style.left = parentPos.left + 'px';
-      modalContainer.style.width = parentPos.width + 'px';
-      modalContainer.style.height = parentPos.height + 'px';
-
-      /**
-       * Add d-none after transition is complete
-       * time must be same as the transition time
-       */
-      setTimeout(() => {
-        modalContainer.classList.add('d-none');
-      }, 500);
-    });
-
-    itemContainer.appendChild(modalContainer);
-  }, 0);
-
-  itemContainer.addEventListener('click', e => {
-    // Show Modal
-
+  // Show Modal
+  itemContainer.addEventListener('click', () => {
     const modal = itemContainer.querySelector('.grid__modal');
 
     modal.classList.remove('d-none');
@@ -134,7 +150,7 @@ function adjustPosition() {
 
   const items = document.querySelectorAll('.grid__item-container');
 
-  items.forEach((item, index) => {
+  items.forEach(item => {
     const parentPos = item.getBoundingClientRect();
     const modal = item.querySelector('.grid__modal');
 
@@ -148,6 +164,5 @@ function adjustPosition() {
     }
   });
 }
-
 window.addEventListener('resize', adjustPosition);
 window.addEventListener('scroll', adjustPosition);

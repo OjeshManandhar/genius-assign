@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap');
 
 :root {
+  /* Colors */
   --gray: #c4c4c4;
   --white: #ffffff;
   --black: #393939;
@@ -9,6 +10,11 @@
   --light-black: #414141;
   --secondary-text: #7f7f7f;
   --black-50: rgba(0, 0, 0, 0.5);
+
+  /* z-index */
+  --z-0: -1;
+  --item-modal: 100;
+  --confirmation: 200;
 }
 
 html {
