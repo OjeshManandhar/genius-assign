@@ -18,3 +18,96 @@ const uploadBtn = document.querySelector('.nav .btn');
 uploadBtn.addEventListener('click', () => {
   console.log('Show Upload Modal');
 });
+
+// Image Grid
+const images = [
+  {
+    src: './assets/images/dog-1.jpg',
+    alt: 'Dog 1'
+  },
+  {
+    src: './assets/images/dog-2.jpg',
+    alt: 'Dog 2'
+  },
+  {
+    src: './assets/images/dog-3.jpg',
+    alt: 'Dog 3'
+  },
+  {
+    src: './assets/images/dog-1.jpg',
+    alt: 'Dog 4'
+  },
+  {
+    src: './assets/images/dog-2.jpg',
+    alt: 'Dog 5'
+  },
+  {
+    src: './assets/images/dog-3.jpg',
+    alt: 'Dog 6'
+  }
+];
+
+const gridContainer = document.querySelector('#grid');
+
+images.forEach((image, index) => {
+  const itemContainer = document.createElement('div');
+  itemContainer.classList.add('grid__item-container');
+  gridContainer.appendChild(itemContainer);
+
+  const item = document.createElement('div');
+  item.classList.add('grid__item');
+  itemContainer.appendChild(item);
+
+  const img = document.createElement('img');
+  img.src = image.src;
+  img.alt = image.alt;
+  item.appendChild(img);
+
+  const overlay = document.createElement('div');
+  overlay.classList.add('grid__overlay');
+  item.appendChild(overlay);
+
+  const removeBtn = document.createElement('span');
+  removeBtn.classList.add('icon-close-round');
+  removeBtn.addEventListener('click', () => {
+    console.log('Remove item:', image, index);
+  });
+  overlay.appendChild(removeBtn);
+
+  setTimeout(() => {
+    const modalContainer = document.createElement('div');
+    modalContainer.classList.add('grid__modal', 'z-0');
+    modalContainer.style.top = itemContainer.offsetTop + 'px';
+    modalContainer.style.left = itemContainer.offsetLeft + 'px';
+    modalContainer.style.width = itemContainer.offsetWidth + 'px';
+    modalContainer.style.height = itemContainer.offsetHeight + 'px';
+
+    modalContainer.addEventListener('click', e => {
+      e.stopPropagation();
+
+      console.log('hide');
+
+      modalContainer.classList.remove('z-100');
+      modalContainer.classList.add('z-0');
+
+      modalContainer.style.top = itemContainer.offsetTop + 'px';
+      modalContainer.style.left = itemContainer.offsetLeft + 'px';
+      modalContainer.style.width = itemContainer.offsetWidth + 'px';
+      modalContainer.style.height = itemContainer.offsetHeight + 'px';
+    });
+
+    itemContainer.appendChild(modalContainer);
+  }, 0);
+
+  itemContainer.addEventListener('click', e => {
+    const modal = itemContainer.querySelector('.grid__modal');
+
+    modal.classList.remove('z-0');
+    modal.classList.add('z-100');
+
+    modal.style.top = 0;
+    modal.style.left = 0;
+    modal.style.width = '100%';
+    modal.style.height = '100%';
+  });
+});

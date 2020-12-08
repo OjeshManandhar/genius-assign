@@ -26,13 +26,15 @@
   place-items: stretch stretch;
 }
 
+.grid__item-container {
+  cursor: pointer;
+}
+
 .grid__item {
   position: relative;
 
   width: 100%;
-  height: auto;
-
-  cursor: pointer;
+  height: 100%;
 }
 
 .grid__item img {
@@ -56,10 +58,22 @@
 
   opacity: 0;
   background-color: var(--overlay);
+
+  transition: opacity 300ms ease;
 }
 
 .grid__overlay:hover {
   opacity: 0.5;
+}
+
+.grid__modal {
+  position: absolute;
+
+  opacity: 0.5;
+  background-color: var(--black);
+  border: 2px solid black;
+
+  transition: all 1000ms ease;
 }
 
 /* Small devices (landscape phones, 576px and up) */

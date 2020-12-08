@@ -16,6 +16,14 @@
   background-color: var(--white) !important;
 }
 
+/* z-index */
+.z-0 {
+  z-index: -1 !important;
+}
+.z-100 {
+  z-index: 100 !important;
+}
+
 /* Container */
 .container {
   margin: auto;
