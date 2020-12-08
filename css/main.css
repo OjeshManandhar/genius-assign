@@ -31,6 +31,8 @@
 
   width: 100%;
   height: auto;
+
+  cursor: pointer;
 }
 
 .grid__item img {
@@ -46,12 +48,18 @@
   right: 0;
   bottom: 0;
 
-  padding: inherit;
+  padding: 0.5rem;
 
-  color: white;
+  color: var(--white);
+  font-size: 2rem;
   text-align: right;
 
-  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  background-color: var(--overlay);
+}
+
+.grid__overlay:hover {
+  opacity: 0.5;
 }
 
 /* Small devices (landscape phones, 576px and up) */
