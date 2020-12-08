@@ -76,34 +76,42 @@ images.forEach((image, index) => {
 
   setTimeout(() => {
     const modalContainer = document.createElement('div');
-    modalContainer.classList.add('grid__modal', 'z-100', 'd-none');
-    modalContainer.style.top = itemContainer.offsetTop + 'px';
-    modalContainer.style.left = itemContainer.offsetLeft + 'px';
-    modalContainer.style.width = itemContainer.offsetWidth + 'px';
-    modalContainer.style.height = itemContainer.offsetHeight + 'px';
+    modalContainer.classList.add('grid__modal', 'd-none');
+
+    const parentPos = itemContainer.getBoundingClientRect();
+    modalContainer.style.top = parentPos.top + 'px';
+    modalContainer.style.left = parentPos.left + 'px';
+    modalContainer.style.width = parentPos.width + 'px';
+    modalContainer.style.height = parentPos.height + 'px';
 
     modalContainer.addEventListener('click', e => {
-      e.stopPropagation();
+      // Hide Modal
 
-      console.log('hide');
+      e.stopPropagation();
 
       modalContainer.classList.remove('grid__modal--show');
 
-      modalContainer.style.top = itemContainer.offsetTop + 'px';
-      modalContainer.style.left = itemContainer.offsetLeft + 'px';
-      modalContainer.style.width = itemContainer.offsetWidth + 'px';
-      modalContainer.style.height = itemContainer.offsetHeight + 'px';
+      const parentPos = itemContainer.getBoundingClientRect();
+      modalContainer.style.top = parentPos.top + 'px';
+      modalContainer.style.left = parentPos.left + 'px';
+      modalContainer.style.width = parentPos.width + 'px';
+      modalContainer.style.height = parentPos.height + 'px';
 
-      // add d-none after transition is complete
+      /**
+       * Add d-none after transition is complete
+       * time must be same as the transition time
+       */
       setTimeout(() => {
         modalContainer.classList.add('d-none');
-      }, 1000);
+      }, 500);
     });
 
     itemContainer.appendChild(modalContainer);
   }, 0);
 
   itemContainer.addEventListener('click', e => {
+    // Show Modal
+
     const modal = itemContainer.querySelector('.grid__modal');
 
     modal.classList.remove('d-none');
@@ -118,3 +126,28 @@ images.forEach((image, index) => {
     }, 0);
   });
 });
+
+function adjustPosition() {
+  /**
+   * Adjust the positions of modal on resize and scroll
+   */
+
+  const items = document.querySelectorAll('.grid__item-container');
+
+  items.forEach((item, index) => {
+    const parentPos = item.getBoundingClientRect();
+    const modal = item.querySelector('.grid__modal');
+
+    if (!modal) return;
+
+    if (!modal.classList.contains('grid__modal--show')) {
+      modal.style.top = parentPos.top + 'px';
+      modal.style.left = parentPos.left + 'px';
+      modal.style.width = parentPos.width + 'px';
+      modal.style.height = parentPos.height + 'px';
+    }
+  });
+}
+
+window.addEventListener('resize', adjustPosition);
+window.addEventListener('scroll', adjustPosition);

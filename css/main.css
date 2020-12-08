@@ -2,8 +2,7 @@
   flex-grow: 1;
 
   /* Using padding: 2rem 0 will overrride padding of .container */
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding: 2rem 1rem;
 
   font-size: 1.5rem;
 }
@@ -57,31 +56,41 @@
   text-align: right;
 
   opacity: 0;
-  background-color: var(--overlay);
+  background-color: var(--black-50);
 
   transition: opacity 300ms ease;
 }
 
 .grid__overlay:hover {
-  opacity: 0.5;
+  opacity: 1;
 }
 
 .grid__modal {
-  position: absolute;
+  /* display: block !important; */
+
+  position: fixed;
 
   opacity: 0;
-  background-color: var(--black);
-  border: 2px solid black;
+  background-color: var(--black-50);
 
-  transition: all 1000ms ease;
+  z-index: -1;
+
+  transition: all 500ms ease;
+
+  border: 5px solid red;
 }
 
 .grid__modal--show {
   opacity: 1;
+  z-index: 100;
 }
 
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
+  .main {
+    padding: 2rem 0;
+  }
+
   .grid {
     grid-template-columns: auto auto;
   }

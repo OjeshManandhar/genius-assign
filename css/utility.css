@@ -11,17 +11,14 @@
   display: none !important;
 }
 
+/* Position */
+.p-fixed {
+  position: fixed !important;
+}
+
 /* Color */
 .bg-white {
   background-color: var(--white) !important;
-}
-
-/* z-index */
-.z-0 {
-  z-index: -1 !important;
-}
-.z-100 {
-  z-index: 100 !important;
 }
 
 /* Container */
@@ -30,8 +27,6 @@
 
   width: 100%;
 
-  padding: 1rem;
-
   border: 1px solid red;
 }
 
@@ -39,7 +34,6 @@
 @media (min-width: 576px) {
   .container {
     width: 540px;
-    padding: 0;
   }
 }
 

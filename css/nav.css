@@ -12,6 +12,8 @@ nav {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  padding: 1rem;
 }
 
 .nav__container > div {
@@ -147,6 +149,8 @@ nav {
 @media (min-width: 768px) {
   nav {
     min-height: 5rem;
+
+    padding: 0;
   }
 
   .nav__container {
