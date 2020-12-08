@@ -69,11 +69,15 @@
 .grid__modal {
   position: absolute;
 
-  opacity: 0.5;
+  opacity: 0;
   background-color: var(--black);
   border: 2px solid black;
 
   transition: all 1000ms ease;
+}
+
+.grid__modal--show {
+  opacity: 1;
 }
 
 /* Small devices (landscape phones, 576px and up) */

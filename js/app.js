@@ -76,7 +76,7 @@ images.forEach((image, index) => {
 
   setTimeout(() => {
     const modalContainer = document.createElement('div');
-    modalContainer.classList.add('grid__modal', 'z-0');
+    modalContainer.classList.add('grid__modal', 'z-100', 'd-none');
     modalContainer.style.top = itemContainer.offsetTop + 'px';
     modalContainer.style.left = itemContainer.offsetLeft + 'px';
     modalContainer.style.width = itemContainer.offsetWidth + 'px';
@@ -87,13 +87,17 @@ images.forEach((image, index) => {
 
       console.log('hide');
 
-      modalContainer.classList.remove('z-100');
-      modalContainer.classList.add('z-0');
+      modalContainer.classList.remove('grid__modal--show');
 
       modalContainer.style.top = itemContainer.offsetTop + 'px';
       modalContainer.style.left = itemContainer.offsetLeft + 'px';
       modalContainer.style.width = itemContainer.offsetWidth + 'px';
       modalContainer.style.height = itemContainer.offsetHeight + 'px';
+
+      // add d-none after transition is complete
+      setTimeout(() => {
+        modalContainer.classList.add('d-none');
+      }, 1000);
     });
 
     itemContainer.appendChild(modalContainer);
@@ -102,12 +106,15 @@ images.forEach((image, index) => {
   itemContainer.addEventListener('click', e => {
     const modal = itemContainer.querySelector('.grid__modal');
 
-    modal.classList.remove('z-0');
-    modal.classList.add('z-100');
+    modal.classList.remove('d-none');
 
-    modal.style.top = 0;
-    modal.style.left = 0;
-    modal.style.width = '100%';
-    modal.style.height = '100%';
+    setTimeout(() => {
+      modal.classList.add('grid__modal--show');
+
+      modal.style.top = 0;
+      modal.style.left = 0;
+      modal.style.width = '100%';
+      modal.style.height = '100%';
+    }, 0);
   });
 });
