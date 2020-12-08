@@ -22,6 +22,8 @@
 
   width: 100%;
 
+  padding: 1rem;
+
   border: 1px solid red;
 }
 
@@ -29,6 +31,7 @@
 @media (min-width: 576px) {
   .container {
     width: 540px;
+    padding: 0;
   }
 }
 

@@ -1,5 +1,10 @@
 nav {
-  background-color: #f7f7f7;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--light-bg);
 }
 
 .nav__container {
@@ -7,8 +12,6 @@ nav {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  padding: 1rem;
 }
 
 .nav__container > div {
@@ -115,7 +118,7 @@ nav {
   margin-right: 2rem;
 }
 
-.nav__group:last-child {
+.nav__group *:last-child {
   margin-right: 0;
 }
 
