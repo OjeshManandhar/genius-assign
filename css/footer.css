@@ -69,7 +69,7 @@
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
   .footer {
-    padding: 2rem 0;
+    padding: 3rem 0;
   }
 
   .footer__nav {
