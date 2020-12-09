@@ -12,6 +12,8 @@
   opacity: 0;
   z-index: var(--z-0);
 
+  overflow: hidden;
+
   background-color: var(--black-50);
 
   transition: all 500ms ease;

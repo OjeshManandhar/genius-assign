@@ -129,7 +129,6 @@ function renderItems() {
           const index = images.findIndex(i => i.id === image.id);
           if (index !== -1) {
             images.splice(index, 1);
-
             renderItems();
           }
         }
