@@ -14,6 +14,17 @@
     <link rel="stylesheet" href="./css/confirmation.css" />
     <link rel="stylesheet" href="./css/upload.css" />
     <link rel="stylesheet" href="./css/footer.css" />
+
+    <!-- Dexie -->
+    <script src="https://unpkg.com/dexie@latest/dist/dexie.js"></script>
+
+    <script>
+      // Init DB
+      const puppyDB = new Dexie('puppy_database');
+      puppyDB.version(1).stores({
+        puppies: '++id, src, title, description'
+      });
+    </script>
   </head>
 
   <body>
@@ -40,8 +51,10 @@
       </div>
     </nav>
 
+    <div id="message" class="content-message">Loading</div>
+
     <!-- Main Content -->
-    <main class="main container">
+    <main id="main" class="main container d-none">
       <h2 class="main__title">Trending Now</h2>
 
       <div id="grid" class="grid"></div>

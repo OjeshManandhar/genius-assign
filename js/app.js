@@ -28,45 +28,21 @@ uploadBtn.addEventListener('click', () =>
 );
 
 // Image Grid
-const images = [
-  {
-    id: 1,
-    src: './assets/images/dog-1.jpg',
-    title: 'Image of dog running',
-    description:
-      'My dog rinning on train tracks. And more dummy texts, just to fill the space'
-  },
-  {
-    id: 2,
-    src: './assets/images/dog-2.jpg',
-    title: 'Dog 2',
-    description: 'Dog 2'
-  },
-  {
-    id: 3,
-    src: './assets/images/dog-3.jpg',
-    title: 'Dog 3',
-    description: 'Dog 3'
-  },
-  {
-    id: 4,
-    src: './assets/images/dog-1.jpg',
-    title: 'Dog 4',
-    description: 'Dog 4'
-  },
-  {
-    id: 5,
-    src: './assets/images/dog-2.jpg',
-    title: 'Dog 5',
-    description: 'Dog 5'
-  },
-  {
-    id: 6,
-    src: './assets/images/dog-3.jpg',
-    title: 'Dog 6',
-    description: 'Dog 6'
-  }
-];
+function showMain() {
+  const message = document.querySelector('#message');
+  message.innerText = 'Loading';
+  message.classList.add('d-none');
+
+  document.querySelector('#main').classList.remove('d-none');
+}
+
+function showMessage(msg) {
+  document.querySelector('#main').classList.add('d-none');
+
+  const message = document.querySelector('#message');
+  message.innerText = msg;
+  message.classList.remove('d-none');
+}
 
 function closeModal(e, item, modal) {
   e.stopPropagation();
@@ -156,68 +132,83 @@ function createModal(image, itemContainer) {
 }
 
 function renderImages() {
-  const gridContainer = document.querySelector('#grid');
+  puppyDB.puppies
+    .toArray()
+    .then(images => {
+      if (images.length === 0) {
+        showMessage('No posts');
+        return;
+      }
 
-  // Remove previous items
-  while (gridContainer.firstChild) {
-    gridContainer.removeChild(gridContainer.firstChild);
-  }
+      showMain();
 
-  // Add new items
-  images.forEach(image => {
-    const itemContainer = document.createElement('div');
-    itemContainer.classList.add('grid__item-container');
-    gridContainer.appendChild(itemContainer);
+      const gridContainer = document.querySelector('#grid');
 
-    const item = document.createElement('div');
-    item.classList.add('grid__item');
-    itemContainer.appendChild(item);
+      // Remove previous items
+      while (gridContainer.firstChild) {
+        gridContainer.removeChild(gridContainer.firstChild);
+      }
 
-    const img = document.createElement('img');
-    img.src = image.src;
-    img.alt = image.title;
-    item.appendChild(img);
+      // Add new items
+      images.forEach(image => {
+        const itemContainer = document.createElement('div');
+        itemContainer.classList.add('grid__item-container');
+        gridContainer.appendChild(itemContainer);
 
-    const overlay = document.createElement('div');
-    overlay.classList.add('grid__overlay');
-    item.appendChild(overlay);
+        const item = document.createElement('div');
+        item.classList.add('grid__item');
+        itemContainer.appendChild(item);
 
-    const removeBtn = document.createElement('span');
-    removeBtn.classList.add('icon-close-round');
-    removeBtn.addEventListener('click', e => {
-      e.stopPropagation();
+        const img = document.createElement('img');
+        img.src = image.src;
+        img.alt = image.title;
+        item.appendChild(img);
 
-      getDeleteConfirmation(result => {
-        if (result) {
-          const index = images.findIndex(i => i.id === image.id);
-          if (index !== -1) {
-            images.splice(index, 1);
-            renderImages();
-          }
-        }
+        const overlay = document.createElement('div');
+        overlay.classList.add('grid__overlay');
+        item.appendChild(overlay);
+
+        const removeBtn = document.createElement('span');
+        removeBtn.classList.add('icon-close-round');
+        removeBtn.addEventListener('click', e => {
+          e.stopPropagation();
+
+          getDeleteConfirmation(result => {
+            if (result) {
+              const index = images.findIndex(i => i.id === image.id);
+              if (index !== -1) {
+                images.splice(index, 1);
+                renderImages();
+              }
+            }
+          });
+        });
+        overlay.appendChild(removeBtn);
+
+        // Create Modal
+        setTimeout(() => createModal(image, itemContainer), 0);
+
+        // Show Modal
+        itemContainer.addEventListener('click', () => {
+          const modal = itemContainer.querySelector('.grid__modal');
+
+          modal.classList.remove('d-none');
+
+          setTimeout(() => {
+            modal.classList.add('grid__modal--show');
+
+            modal.style.top = 0;
+            modal.style.left = 0;
+            modal.style.width = '100%';
+            modal.style.height = '100%';
+          }, 0);
+        });
       });
+    })
+    .catch(err => {
+      console.log('db.list error:', err);
+      showMessage('An error occured');
     });
-    overlay.appendChild(removeBtn);
-
-    // Create Modal
-    setTimeout(() => createModal(image, itemContainer), 0);
-
-    // Show Modal
-    itemContainer.addEventListener('click', () => {
-      const modal = itemContainer.querySelector('.grid__modal');
-
-      modal.classList.remove('d-none');
-
-      setTimeout(() => {
-        modal.classList.add('grid__modal--show');
-
-        modal.style.top = 0;
-        modal.style.left = 0;
-        modal.style.width = '100%';
-        modal.style.height = '100%';
-      }, 0);
-    });
-  });
 }
 
 function adjustPosition() {
