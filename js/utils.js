@@ -1,5 +1,5 @@
 // For delete confirmation
-function getDeleteConfirmation(image, cb) {
+function deleteImage(image, cb) {
   const confirm = document.querySelector('#confirmation');
   const btnTrue = document.querySelector('#confirmation #btn-true');
   const btnFalse = document.querySelector('#confirmation #btn-false');
@@ -31,8 +31,6 @@ function getDeleteConfirmation(image, cb) {
     const targetId = e.target.id;
 
     if (targetId === btnTrue.id) {
-      console.log('delete:', image);
-
       puppyDB.puppies
         .delete(image.id)
         .then(() => {

@@ -174,7 +174,7 @@ function renderImages() {
         removeBtn.addEventListener('click', e => {
           e.stopPropagation();
 
-          getDeleteConfirmation(image, result => {
+          deleteImage(image, result => {
             if (result) {
               window.alert('Image deleted');
             } else if (result === false) {
