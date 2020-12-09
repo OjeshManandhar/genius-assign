@@ -16,12 +16,12 @@ navInput.addEventListener('input', () => {
 const uploadBtn = document.querySelector('.nav .btn');
 
 uploadBtn.addEventListener('click', () =>
-  uploadImage(image => {
-    image.id = images.length;
-
-    images.push(image);
-
-    window.alert("Your dog's photo has been uploaded");
+  uploadImage(result => {
+    if (result) {
+      window.alert("Your dog's photo has been uploaded");
+    } else {
+      window.alert("couldn't upload your dog's image");
+    }
 
     renderImages();
   })

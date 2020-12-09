@@ -182,7 +182,22 @@ function uploadImage(cb) {
     imageDetail.title = title.value;
     imageDetail.description = description.value;
     upload.querySelector('form').reset();
-    hideModal();
-    cb(imageDetail);
+
+    puppyDB.puppies
+      .add({
+        src: imageDetail.src,
+        title: imageDetail.title,
+        description: imageDetail.description
+      })
+      .then(() => {
+        hideModal();
+        cb(true);
+      })
+      .catch(err => {
+        console.log('add err:', err);
+
+        hideModal();
+        cb(false);
+      });
   });
 }
