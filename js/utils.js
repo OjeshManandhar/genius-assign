@@ -3,27 +3,26 @@ function getDeleteConfirmation(cb) {
   const btnTrue = document.querySelector('#confirmation #btn-true');
   const btnFalse = document.querySelector('#confirmation #btn-false');
 
-  function hideConfirmation() {
-    confirm.classList.add('v-hidden');
-    confirm.classList.remove('confirmation--show');
+  function hideModal() {
+    confirm.classList.remove('modal--show');
 
     btnTrue.removeEventListener('click', handleBtnClick);
     btnFalse.removeEventListener('click', handleBtnClick);
     document.removeEventListener('keydown', handleKeydown);
-    confirm.removeEventListener('click', handleConfirmClick);
+    confirm.removeEventListener('click', handleModalClick);
   }
 
   function handleKeydown(e) {
     if (e.key === 'Escape') {
       cb(false);
-      hideConfirmation();
+      hideModal();
     }
   }
 
-  function handleConfirmClick(e) {
+  function handleModalClick(e) {
     if (e.target === e.currentTarget) {
       cb(false);
-      hideConfirmation();
+      hideModal();
     }
   }
 
@@ -36,15 +35,43 @@ function getDeleteConfirmation(cb) {
       cb(false);
     }
 
-    hideConfirmation();
+    hideModal();
   }
 
-  // Show confirmation
-  confirm.classList.remove('v-hidden');
-  confirm.classList.add('confirmation--show');
+  // Show Modal
+  confirm.classList.add('modal--show');
 
   btnTrue.addEventListener('click', handleBtnClick);
   btnFalse.addEventListener('click', handleBtnClick);
   document.addEventListener('keydown', handleKeydown);
-  confirm.addEventListener('click', handleConfirmClick);
+  confirm.addEventListener('click', handleModalClick);
+}
+
+function uploadImage() {
+  const upload = document.querySelector('#upload');
+
+  function hideModal() {
+    upload.classList.remove('modal--show');
+
+    upload.removeEventListener('click', handleModalClick);
+    document.removeEventListener('keydown', handleKeydown);
+  }
+
+  function handleKeydown(e) {
+    if (e.key === 'Escape') {
+      hideModal();
+    }
+  }
+
+  function handleModalClick(e) {
+    if (e.target === e.currentTarget) {
+      hideModal();
+    }
+  }
+
+  // Show Modal
+  upload.classList.add('modal--show');
+
+  upload.addEventListener('click', handleModalClick);
+  document.addEventListener('keydown', handleKeydown);
 }

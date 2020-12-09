@@ -1,0 +1,30 @@
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  right: 50%;
+  bottom: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  opacity: 0;
+  z-index: var(--z-0);
+
+  overflow: hidden;
+
+  background-color: var(--black-50);
+
+  transition: all 500ms ease;
+}
+
+.modal--show {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  opacity: 1;
+  z-index: var(--modal);
+}

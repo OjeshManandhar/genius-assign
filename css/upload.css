@@ -1,0 +1,111 @@
+.upload {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  flex-wrap: wrap;
+
+  min-width: 32rem;
+  /* width: 90%; */
+
+  margin: 1rem;
+  padding: 1rem;
+
+  font-size: 2rem;
+  color: var(--black);
+
+  opacity: inherit;
+
+  border-radius: 1rem;
+  background-color: var(--light-bg);
+}
+
+.upload__close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+
+  font-size: 2.5rem;
+}
+
+.upload__title {
+  font-weight: 700;
+  font-size: 2.5rem;
+
+  margin-bottom: 2rem;
+  margin-right: 2.5rem; /* Because of close button */
+}
+
+.from {
+  border: 2px solid red;
+}
+
+.form__control {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.form__control:last-child {
+  margin-bottom: 0;
+}
+
+.form__label {
+  width: 100%;
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.form__input {
+  padding: 0.5rem;
+
+  border-radius: 1rem;
+  border: 1px solid var(--gray);
+  background-color: transparent;
+}
+
+.form__input--large {
+  height: 5rem;
+  resize: none;
+  font-family: inherit;
+}
+
+.form__submit {
+  margin-top: 2rem;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+  .upload {
+    min-width: 55rem;
+    width: auto;
+
+    padding: 2rem;
+
+    border: 2px solid red;
+  }
+
+  .upload__close {
+    top: 1rem;
+    right: 1rem;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+}

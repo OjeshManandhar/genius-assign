@@ -16,7 +16,7 @@ navInput.addEventListener('input', () => {
 const uploadBtn = document.querySelector('.nav .btn');
 
 uploadBtn.addEventListener('click', () => {
-  console.log('Show Upload Modal');
+  uploadImage();
 });
 
 // Image Grid

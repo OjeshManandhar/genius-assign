@@ -8,9 +8,11 @@
     <link rel="stylesheet" href="./css/styles.css" />
     <link rel="stylesheet" href="./css/puppygram.css" />
     <link rel="stylesheet" href="./css/utility.css" />
+    <link rel="stylesheet" href="./css/modal.css" />
     <link rel="stylesheet" href="./css/nav.css" />
     <link rel="stylesheet" href="./css/main.css" />
     <link rel="stylesheet" href="./css/confirmation.css" />
+    <link rel="stylesheet" href="./css/upload.css" />
   </head>
 
   <body>
@@ -55,11 +57,68 @@
 
     <footer class="footer">Footer</footer>
 
-    <div id="confirmation" class="confirmation v-hidden">
-      <div class="confirmation__dialogue">
-        <div class="confirmation__msg">Are you sure?</div>
+    <!-- Delete Confirmation Modal -->
+    <div id="confirmation" class="modal">
+      <div class="confirmation">
+        <h3 class="confirmation__title">Are you sure?</h3>
         <button id="btn-true" class="btn btn--no-highlight">Yes, delete</button>
         <button id="btn-false" class="btn">No</button>
+      </div>
+    </div>
+
+    <!-- Upload Image Modal -->
+    <div id="upload" class="modal">
+      <div class="upload">
+        <span class="icon-close-round upload__close"></span>
+
+        <h3 class="upload__title">Upload your dog's photo</h3>
+
+        <form action="#" class="form">
+          <div class="form__control">
+            <label for="image" class="form__label">Upload a photo</label>
+            <input
+              type="file"
+              class="form__input form__input--image"
+              accept="image/*"
+              required
+            />
+          </div>
+          <div class="form__control">
+            <label for="title" class="form__label">Title</label>
+            <input
+              type="text"
+              class="form__input"
+              placeholder="What breed is your dog"
+              required
+            />
+          </div>
+          <div class="form__control">
+            <label for="description" class="form__label">
+              Description (Optional)
+            </label>
+            <textarea
+              name="description"
+              class="form__input form__input--large"
+              placeholder="(optional)"
+            ></textarea>
+          </div>
+          <div class="form__control">
+            <label for="userId" class="form__label">Secret User ID</label>
+            <input
+              type="number"
+              class="form__input"
+              step="1"
+              min="1000"
+              max="999999"
+              placeholder="#######"
+              required
+            />
+          </div>
+
+          <button class="form__submit btn btn--large" type="submit">
+            Submit
+          </button>
+        </form>
       </div>
     </div>
 

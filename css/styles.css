@@ -15,7 +15,7 @@
   /* z-index */
   --z-0: -1;
   --item-modal: 100;
-  --confirmation: 200;
+  --modal: 200;
 }
 
 html {
@@ -23,6 +23,7 @@ html {
   min-width: 320px;
 
   font-size: 10px; /* For making it easier to use rem */
+  font-weight: normal;
 }
 
 html,
@@ -57,6 +58,8 @@ body {
   border: none;
   outline: none;
   border-radius: 0.8rem;
+
+  cursor: pointer;
 }
 
 .btn--large {
