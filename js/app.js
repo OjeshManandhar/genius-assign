@@ -148,6 +148,11 @@ function createModal(image, itemContainer) {
   closeModalBtn.addEventListener('click', e => {
     closeModal(e, itemContainer, modalContainer);
   });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      closeModal(e, itemContainer, modalContainer);
+    }
+  });
 }
 
 function renderImages() {
