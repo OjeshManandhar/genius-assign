@@ -78,8 +78,8 @@
 
         <form action="#" class="form">
           <div class="form__control">
-            <label for="image" class="form__label">Upload a photo</label>
             <input id="img-input" type="file" accept="image/*" hidden />
+            <label for="image" class="form__label">Upload a photo</label>
             <div class="form__input form__input--image">Select Photo</div>
             <div class="form__preview">
               Preview
@@ -93,6 +93,7 @@
               name="title"
               class="form__input"
               placeholder="What breed is your dog"
+              autocomplete="off"
               required
             />
           </div>

@@ -8,7 +8,7 @@
   flex-wrap: wrap;
 
   min-width: 32rem;
-  /* width: 90%; */
+  width: 90%;
 
   margin: 1rem;
   padding: 1rem;
@@ -36,10 +36,6 @@
 
   margin-bottom: 2rem;
   margin-right: 2.5rem; /* Because of close button */
-}
-
-.from {
-  border: 2px solid red;
 }
 
 .form__control {
@@ -91,7 +87,7 @@
 }
 
 .form__input--large {
-  height: 5rem;
+  height: 7.5rem;
   resize: none;
   font-family: inherit;
 }
@@ -119,7 +115,7 @@
   width: 5rem;
   height: 5rem;
 
-  margin: auto;
+  margin: 0 auto;
   margin-top: 1rem;
 
   font-size: 1rem;
@@ -128,9 +124,15 @@
   border-radius: 0.25rem;
   border: 1px solid var(--secondary-text);
 
+  overflow: hidden;
+
   background-color: var(--gray);
 
   cursor: pointer;
+}
+
+.form__preview * {
+  border-radius: 0.25rem;
 }
 
 .form__img {
@@ -159,20 +161,68 @@
   margin-top: 1.5rem;
 }
 
+/* Extra one for this only */
+@media (min-width: 450px) {
+  .form__control {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .form__label {
+    align-self: flex-start;
+    width: 15rem;
+    padding-top: 0.5rem;
+  }
+
+  input[type='file'] + .form__label {
+    padding-top: 0;
+    align-self: center;
+  }
+
+  .form__input {
+    flex-grow: 1;
+  }
+
+  .form__preview {
+    margin: 0 1rem;
+
+    width: 6rem;
+    height: 6rem;
+  }
+}
+
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
   .upload {
-    min-width: 55rem;
-    width: auto;
+    width: 55rem;
 
     padding: 2rem;
-
-    border: 2px solid red;
   }
 
   .upload__close {
     top: 1rem;
     right: 1rem;
+  }
+
+  .upload__title {
+    margin-right: 1.5rem; /* Because of close button */
+  }
+
+  .form__input--image {
+    flex-grow: 0;
+    width: 20rem;
+  }
+
+  .form__preview {
+    margin: 0 1rem 0 auto;
+
+    width: 7rem;
+    height: 7rem;
+  }
+
+  .form__input--large {
+    height: 10rem;
   }
 }
 

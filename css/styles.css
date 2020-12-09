@@ -67,6 +67,8 @@ body {
 
 .btn--large {
   width: 100%;
+
+  padding: 1rem 2.25rem;
 }
 
 .btn--no-highlight {
