@@ -7,6 +7,7 @@
 
   font-size: 5rem;
   font-weight: 700;
+  text-align: center;
 
   /* Using padding: 2rem 0 will overrride padding of .container */
   padding: 2rem 1rem;
@@ -196,6 +197,7 @@
   color: var(--secondary-text);
 
   margin: 2rem auto;
+  margin-bottom: 2rem;
 }
 
 .main__label {
