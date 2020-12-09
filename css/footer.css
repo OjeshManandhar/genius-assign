@@ -1,0 +1,106 @@
+.footer {
+  /* Using padding: 2rem 0 will overrride padding of .container */
+  padding: 2rem 1rem;
+
+  border-top: 1px solid var(--gray);
+}
+
+.footer__nav,
+.footer__info {
+  list-style: none;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  margin: auto;
+}
+
+.footer__nav {
+  margin-bottom: 2rem;
+}
+
+.footer__nav-item,
+.footer__info-item {
+  font-size: 1.5rem;
+  color: var(--light-black);
+
+  margin-bottom: 1rem;
+}
+
+/* For footer nav*/
+@media (min-width: 360px) {
+  .footer__nav {
+    flex-direction: row;
+  }
+
+  .footer__nav-item {
+    font-size: 1.7rem;
+    color: var(--light-black);
+  }
+
+  .footer__nav-item + .footer__nav-item::before {
+    content: '\00B7';
+    padding: 0 1.5rem;
+
+    font-size: 2rem;
+    font-weight: 800;
+  }
+}
+
+.footer__info-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer__title {
+  font-weight: 800;
+}
+
+.footer__info-item img {
+  width: 2rem;
+  height: 2rem;
+  margin-left: 0.5rem;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+  .footer {
+    padding: 2rem 0;
+  }
+
+  .footer__nav {
+    margin-bottom: 0;
+  }
+
+  .footer__nav-item + .footer__nav-item::before {
+    padding: 0 2.5rem;
+  }
+
+  .footer__info {
+    flex-direction: row;
+  }
+
+  .footer__info-item {
+    margin: 1rem 3rem;
+  }
+
+  .footer__info-item:last-child {
+    margin: 0;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+}
