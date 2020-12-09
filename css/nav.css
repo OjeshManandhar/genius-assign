@@ -119,6 +119,7 @@ nav {
 
 .nav__group * {
   margin-right: 2rem;
+  cursor: pointer;
 }
 
 .nav__group *:last-child {
