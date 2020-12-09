@@ -1,5 +1,5 @@
 // For delete confirmation
-function getDeleteConfirmation(cb) {
+function getDeleteConfirmation(image, cb) {
   const confirm = document.querySelector('#confirmation');
   const btnTrue = document.querySelector('#confirmation #btn-true');
   const btnFalse = document.querySelector('#confirmation #btn-false');
@@ -15,14 +15,14 @@ function getDeleteConfirmation(cb) {
 
   function handleKeydown(e) {
     if (e.key === 'Escape') {
-      cb(false);
+      cb(null);
       hideModal();
     }
   }
 
   function handleModalClick(e) {
     if (e.target === e.currentTarget) {
-      cb(false);
+      cb(null);
       hideModal();
     }
   }
@@ -31,12 +31,23 @@ function getDeleteConfirmation(cb) {
     const targetId = e.target.id;
 
     if (targetId === btnTrue.id) {
-      cb(true);
-    } else if (targetId === btnFalse.id) {
-      cb(false);
-    }
+      console.log('delete:', image);
 
-    hideModal();
+      puppyDB.puppies
+        .delete(image.id)
+        .then(() => {
+          cb(true);
+          hideModal();
+        })
+        .catch(err => {
+          console.log('Delete err:', err);
+          cb(false);
+          hideModal();
+        });
+    } else if (targetId === btnFalse.id) {
+      cb(null);
+      hideModal();
+    }
   }
 
   // Show Modal

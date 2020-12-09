@@ -170,17 +170,18 @@ function renderImages() {
 
         const removeBtn = document.createElement('span');
         removeBtn.classList.add('icon-close-round');
+        // Delete Imapge
         removeBtn.addEventListener('click', e => {
           e.stopPropagation();
 
-          getDeleteConfirmation(result => {
+          getDeleteConfirmation(image, result => {
             if (result) {
-              const index = images.findIndex(i => i.id === image.id);
-              if (index !== -1) {
-                images.splice(index, 1);
-                renderImages();
-              }
+              window.alert('Image deleted');
+            } else if (result === false) {
+              window.alert("Couldn't delete image");
             }
+
+            renderImages();
           });
         });
         overlay.appendChild(removeBtn);
