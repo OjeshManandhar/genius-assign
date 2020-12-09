@@ -144,8 +144,17 @@
   object-fit: cover;
 }
 
+.form__error {
+  font-size: 1rem;
+  text-align: center;
+  color: var(--error);
+
+  margin: 0;
+  padding: 0;
+}
+
 .form__submit {
-  margin-top: 2rem;
+  margin-top: 1.5rem;
 }
 
 /* Small devices (landscape phones, 576px and up) */

@@ -11,6 +11,11 @@
   display: none !important;
 }
 
+/* Visibility */
+.v-hidden {
+  visibility: hidden;
+}
+
 /* Color */
 .bg-white {
   background-color: var(--white) !important;

@@ -3,8 +3,9 @@
 :root {
   /* Colors */
   --gray: #c4c4c4;
-  --white: #ffffff;
   --black: #393939;
+  --error: #ee3333;
+  --white: #ffffff;
   --orange: #f29643;
   --light-bg: #f7f7f7;
   --light-black: #414141;

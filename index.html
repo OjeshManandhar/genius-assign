@@ -79,13 +79,7 @@
         <form action="#" class="form" onsubmit="console.log('submit')">
           <div class="form__control">
             <label for="image" class="form__label">Upload a photo</label>
-            <input
-              id="img-input"
-              type="file"
-              accept="image/*"
-              hidden
-              required
-            />
+            <input id="img-input" type="file" accept="image/*" hidden />
             <div class="form__input form__input--image">Select Photo</div>
             <div class="form__preview">
               Preview
@@ -123,6 +117,8 @@
               required
             />
           </div>
+
+          <p class="form__error v-hidden"></p>
 
           <button class="form__submit btn btn--large" type="submit">
             Submit
