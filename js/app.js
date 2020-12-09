@@ -119,7 +119,9 @@ function createModal(image, itemContainer) {
 
   // Hide Modal
   modalContainer.addEventListener('click', e => {
-    closeModal(e, itemContainer, modalContainer);
+    if (e.target === e.currentTarget) {
+      closeModal(e, itemContainer, modalContainer);
+    }
   });
   closeModalBtn.addEventListener('click', e => {
     closeModal(e, itemContainer, modalContainer);
