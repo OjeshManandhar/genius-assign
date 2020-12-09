@@ -1,3 +1,4 @@
+// For delete confirmation
 function getDeleteConfirmation(cb) {
   const confirm = document.querySelector('#confirmation');
   const btnTrue = document.querySelector('#confirmation #btn-true');
@@ -47,6 +48,7 @@ function getDeleteConfirmation(cb) {
   confirm.addEventListener('click', handleModalClick);
 }
 
+// Check userId
 function checkUserId(id) {
   if (id / 10 <= 1) {
     // singal digit
@@ -67,6 +69,7 @@ function checkUserId(id) {
   return checkUserId(sum);
 }
 
+// Handle Upload of image
 function uploadImage(cb) {
   const imageDetail = {
     src: '',
@@ -167,8 +170,8 @@ function uploadImage(cb) {
     // Save image
     imageDetail.title = title.value;
     imageDetail.description = description.value;
-    cb(imageDetail);
     upload.querySelector('form').reset();
     hideModal();
+    cb(imageDetail);
   });
 }

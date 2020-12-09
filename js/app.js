@@ -21,6 +21,8 @@ uploadBtn.addEventListener('click', () =>
 
     images.push(image);
 
+    window.alert("Your dog's photo has been uploaded");
+
     renderImages();
   })
 );
