@@ -146,14 +146,19 @@
 }
 
 .modal-content__description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+
   font-size: 1.5rem;
 
   padding-bottom: 1rem;
   border-bottom: 2px solid var(--input-border);
 }
 
-.modal-content__description h4 {
-  margin-bottom: 0.5rem;
+.modal-content__description p {
+  margin-top: 0.5rem;
 }
 
 .modal-content__paw-fives {

@@ -4,17 +4,34 @@ function showMessageModal(msg, hideModal) {
   const message = modal.querySelector('.message p');
   const btn = modal.querySelector('.message button');
 
-  function btnClickHandler() {
-    // Hide modal
+  function hideThisModal() {
     modal.classList.remove('modal--show');
     message.innerHTML = '';
+
     hideModal();
-    btn.removeEventListener('click', btnClickHandler);
+
+    btn.removeEventListener('click', hideThisModal);
+    modal.removeEventListener('click', handleModalClick);
+    document.removeEventListener('keydown', handleKeydown);
+  }
+
+  function handleKeydown(e) {
+    if (e.key === 'Escape') {
+      hideThisModal();
+    }
+  }
+
+  function handleModalClick(e) {
+    if (e.target === e.currentTarget) {
+      hideThisModal();
+    }
   }
 
   modal.classList.add('modal--show');
   message.innerHTML = msg;
-  btn.addEventListener('click', btnClickHandler);
+  btn.addEventListener('click', hideThisModal);
+  modal.addEventListener('click', handleModalClick);
+  document.addEventListener('keydown', handleKeydown);
 }
 
 // For delete confirmation
