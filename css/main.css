@@ -83,6 +83,41 @@
   z-index: var(--item-modal);
 }
 
+.main__load-more {
+  font-weight: 700;
+  font-size: 1.7rem;
+  text-align: center;
+  color: var(--secondary-text);
+
+  margin: 2rem auto;
+}
+
+.main__selector {
+  font-weight: 700;
+  font-size: 1.7rem;
+  text-align: center;
+  color: var(--secondary-text);
+
+  margin: 2rem auto;
+}
+
+.main__label {
+  margin-right: 0.5rem;
+}
+
+.main__select {
+  font-size: 1.7rem;
+  line-height: inherit;
+
+  padding: 0 1rem 0 0.5rem;
+
+  outline: none;
+  border-radius: 0.5rem;
+  background-color: transparent;
+
+  cursor: pointer;
+}
+
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
   .main {

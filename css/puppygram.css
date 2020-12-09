@@ -9,6 +9,9 @@
 
 [class^='icon-']:before,
 [class*=' icon-']:before {
+  position: relative;
+  top: 0.25rem;
+
   font-family: 'puppygram' !important;
   font-style: normal !important;
   font-weight: normal !important;
