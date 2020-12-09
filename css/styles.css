@@ -15,6 +15,7 @@
 
   /* z-index */
   --z-0: -1;
+  --preview-image: 50;
   --item-modal: 100;
   --modal: 200;
 }

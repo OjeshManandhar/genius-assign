@@ -58,13 +58,19 @@
 
 .form__label {
   width: 100%;
+
   font-weight: 600;
   font-size: 1.5rem;
+
   margin-bottom: 0.5rem;
 }
 
 .form__input {
+  height: 3rem;
+
   padding: 0.5rem;
+
+  font-size: 1.25rem;
 
   outline: none;
 
@@ -72,6 +78,16 @@
   border: 1px solid var(--input-border);
 
   background-color: transparent;
+
+  cursor: pointer;
+}
+
+.form__input--image {
+  text-align: center;
+  color: var(--secondary-text);
+
+  border-color: var(--gray);
+  background-color: var(--gray);
 }
 
 .form__input--large {
@@ -80,9 +96,52 @@
   font-family: inherit;
 }
 
+.form__input::placeholder {
+  color: var(--secondary-text);
+}
+
 .form__input:focus {
   border-color: var(--orange);
   box-shadow: 0 0 0.8rem 0 var(--orange);
+}
+
+.form__input--image:hover {
+  box-shadow: 0 0 0.8rem 0 var(--secondary-text);
+}
+
+.form__preview {
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 5rem;
+  height: 5rem;
+
+  margin: auto;
+  margin-top: 1rem;
+
+  font-size: 1rem;
+  color: var(--secondary-text);
+
+  border-radius: 0.25rem;
+  border: 1px solid var(--secondary-text);
+
+  background-color: var(--gray);
+
+  cursor: pointer;
+}
+
+.form__img {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
 }
 
 .form__submit {

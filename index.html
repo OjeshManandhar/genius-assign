@@ -76,15 +76,21 @@
 
         <h3 class="upload__title">Upload your dog's photo</h3>
 
-        <form action="#" class="form">
+        <form action="#" class="form" onsubmit="console.log('submit')">
           <div class="form__control">
             <label for="image" class="form__label">Upload a photo</label>
             <input
+              id="img-input"
               type="file"
-              class="form__input form__input--image"
               accept="image/*"
+              hidden
               required
             />
+            <div class="form__input form__input--image">Select Photo</div>
+            <div class="form__preview">
+              Preview
+              <img src="" alt="" class="form__img d-none" />
+            </div>
           </div>
           <div class="form__control">
             <label for="title" class="form__label">Title</label>
