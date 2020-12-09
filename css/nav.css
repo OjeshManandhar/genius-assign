@@ -58,7 +58,6 @@ nav {
 
   font-size: 1.5rem;
 
-  overflow: hidden;
   border-radius: 0.5rem;
 }
 
@@ -73,13 +72,15 @@ nav {
 
   padding: 0.25rem 1rem;
 
-  border: 1px solid #c1c1c1;
+  outline: none;
+
+  border: 1px solid var(--input-border);
 
   background-color: transparent;
 }
 
 .nav__input:focus {
-  outline-color: var(--orange);
+  border-color: var(--orange);
   background-color: var(--white);
   box-shadow: 0 0 0.8rem 0 var(--orange);
 }

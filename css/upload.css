@@ -66,8 +66,11 @@
 .form__input {
   padding: 0.5rem;
 
-  border-radius: 1rem;
-  border: 1px solid var(--gray);
+  outline: none;
+
+  border-radius: 0.5rem;
+  border: 1px solid var(--input-border);
+
   background-color: transparent;
 }
 
@@ -75,6 +78,11 @@
   height: 5rem;
   resize: none;
   font-family: inherit;
+}
+
+.form__input:focus {
+  border-color: var(--orange);
+  box-shadow: 0 0 0.8rem 0 var(--orange);
 }
 
 .form__submit {
