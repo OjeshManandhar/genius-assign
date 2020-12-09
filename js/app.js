@@ -15,7 +15,15 @@ navInput.addEventListener('input', () => {
 // Upload
 const uploadBtn = document.querySelector('.nav .btn');
 
-uploadBtn.addEventListener('click', uploadImage);
+uploadBtn.addEventListener('click', () =>
+  uploadImage(image => {
+    image.id = images.length;
+
+    images.push(image);
+
+    renderImages();
+  })
+);
 
 // Image Grid
 const images = [
@@ -90,7 +98,7 @@ function createModal(itemContainer) {
   });
 }
 
-function renderItems() {
+function renderImages() {
   const gridContainer = document.querySelector('#grid');
 
   // Remove previous items
@@ -127,7 +135,7 @@ function renderItems() {
           const index = images.findIndex(i => i.id === image.id);
           if (index !== -1) {
             images.splice(index, 1);
-            renderItems();
+            renderImages();
           }
         }
       });
@@ -180,4 +188,4 @@ function adjustPosition() {
 window.addEventListener('resize', adjustPosition);
 window.addEventListener('scroll', adjustPosition);
 
-renderItems();
+renderImages();

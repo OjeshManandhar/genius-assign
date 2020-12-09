@@ -67,7 +67,12 @@ function checkUserId(id) {
   return checkUserId(sum);
 }
 
-function uploadImage() {
+function uploadImage(cb) {
+  const imageDetail = {
+    src: '',
+    title: '',
+    description: ''
+  };
   let isImageUploaded = false;
 
   const upload = document.querySelector('#upload');
@@ -120,6 +125,7 @@ function uploadImage() {
 
       // check file is image or not
       if (file.type.split('/')[0] !== 'image') {
+        imgInput.value = null;
         error.innerText = 'Please upload an image';
         error.classList.remove('v-hidden');
         return;
@@ -129,6 +135,8 @@ function uploadImage() {
       reader.onload = function () {
         // result is base64 string
         const result = reader.result;
+
+        imageDetail.src = result;
 
         imgPreview.src = result;
         imgPreview.classList.remove('d-none');
@@ -157,6 +165,10 @@ function uploadImage() {
     }
 
     // Save image
-    console.log('Save image');
+    imageDetail.title = title.value;
+    imageDetail.description = description.value;
+    cb(imageDetail);
+    upload.querySelector('form').reset();
+    hideModal();
   });
 }
