@@ -136,6 +136,7 @@ function renderItems() {
     });
     overlay.appendChild(removeBtn);
 
+    // Create Modal
     setTimeout(() => createModal(itemContainer), 0);
 
     // Show Modal
@@ -177,6 +178,7 @@ function adjustPosition() {
     }
   });
 }
+
 window.addEventListener('resize', adjustPosition);
 window.addEventListener('scroll', adjustPosition);
 

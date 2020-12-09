@@ -10,10 +10,18 @@ function getDeleteConfirmation(cb) {
     btnTrue.removeEventListener('click', handleBtnClick);
     btnFalse.removeEventListener('click', handleBtnClick);
     document.removeEventListener('keydown', handleKeydown);
+    confirm.removeEventListener('click', handleConfirmClick);
   }
 
   function handleKeydown(e) {
     if (e.key === 'Escape') {
+      cb(false);
+      hideConfirmation();
+    }
+  }
+
+  function handleConfirmClick(e) {
+    if (e.target === e.currentTarget) {
       cb(false);
       hideConfirmation();
     }
@@ -38,4 +46,5 @@ function getDeleteConfirmation(cb) {
   btnTrue.addEventListener('click', handleBtnClick);
   btnFalse.addEventListener('click', handleBtnClick);
   document.addEventListener('keydown', handleKeydown);
+  confirm.addEventListener('click', handleConfirmClick);
 }
