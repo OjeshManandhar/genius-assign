@@ -85,6 +85,7 @@ function uploadImage(cb) {
     title: '',
     description: ''
   };
+
   let isImageUploaded = false;
 
   const upload = document.querySelector('#upload');
@@ -98,6 +99,13 @@ function uploadImage(cb) {
   const description = upload.querySelector('.form__input[name="description"]');
 
   function hideModal() {
+    imgPreview.src = '';
+    imgPreview.classList.add('d-none');
+    isImageUploaded = false;
+
+    error.innerText = '';
+    error.classList.add('v-hidden');
+
     upload.classList.remove('modal--show');
 
     upload.removeEventListener('click', handleModalClick);

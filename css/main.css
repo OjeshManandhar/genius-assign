@@ -31,7 +31,7 @@
 
 .grid {
   display: grid;
-  grid-template-columns: auto;
+  grid-template-columns: 1fr;
 
   row-gap: 2rem;
   column-gap: 2rem;
@@ -206,7 +206,7 @@
   cursor: pointer;
 }
 
-/* Extra one for modla close button */
+/* Extra one for modal close button */
 @media (min-width: 400px) {
   .modal-content__close {
     top: 0.25rem;
@@ -221,7 +221,7 @@
   }
 
   .grid {
-    grid-template-columns: auto auto;
+    grid-template-columns: 1fr 1fr;
   }
 
   .modal-content {
@@ -258,7 +258,7 @@
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
   .grid {
-    grid-template-columns: auto auto auto;
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }
 
