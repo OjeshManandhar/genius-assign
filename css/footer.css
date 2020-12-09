@@ -29,6 +29,23 @@
   margin-bottom: 1rem;
 }
 
+.footer__info-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer__title {
+  font-weight: 800;
+}
+
+.footer__info-item img {
+  width: 2rem;
+  height: 2rem;
+  margin-left: 0.5rem;
+}
+
 /* For footer nav*/
 @media (min-width: 360px) {
   .footer__nav {
@@ -47,23 +64,6 @@
     font-size: 2rem;
     font-weight: 800;
   }
-}
-
-.footer__info-item {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-
-.footer__title {
-  font-weight: 800;
-}
-
-.footer__info-item img {
-  width: 2rem;
-  height: 2rem;
-  margin-left: 0.5rem;
 }
 
 /* Small devices (landscape phones, 576px and up) */

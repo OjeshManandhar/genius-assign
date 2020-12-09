@@ -32,8 +32,9 @@ const images = [
   {
     id: 1,
     src: './assets/images/dog-1.jpg',
-    title: 'Dog 1',
-    description: 'Dog 1'
+    title: 'Image of dog running',
+    description:
+      'My dog rinning on train tracks. And more dummy texts, just to fill the space'
   },
   {
     id: 2,
@@ -67,7 +68,27 @@ const images = [
   }
 ];
 
-function createModal(itemContainer) {
+function closeModal(e, item, modal) {
+  e.stopPropagation();
+
+  modal.classList.remove('grid__modal--show');
+
+  const parentPos = item.getBoundingClientRect();
+  modal.style.top = parentPos.top + 'px';
+  modal.style.left = parentPos.left + 'px';
+  modal.style.width = parentPos.width + 'px';
+  modal.style.height = parentPos.height + 'px';
+
+  /**
+   * Add d-none after transition is complete
+   * time must be same as the transition time
+   */
+  setTimeout(() => {
+    modal.classList.add('d-none');
+  }, 500);
+}
+
+function createModal(image, itemContainer) {
   const modalContainer = document.createElement('div');
   modalContainer.classList.add('grid__modal', 'd-none');
   itemContainer.appendChild(modalContainer);
@@ -78,25 +99,54 @@ function createModal(itemContainer) {
   modalContainer.style.width = parentPos.width + 'px';
   modalContainer.style.height = parentPos.height + 'px';
 
+  const modalContent = document.createElement('div');
+  modalContent.classList.add('modal-content');
+  modalContainer.appendChild(modalContent);
+
+  const closeModalBtn = document.createElement('span');
+  closeModalBtn.classList.add('icon-close-round', 'modal-content__close');
+  modalContent.appendChild(closeModalBtn);
+
+  const modalImage = document.createElement('img');
+  modalImage.src = image.src;
+  modalImage.alt = image.title;
+  modalImage.classList.add('modal-content__img');
+  modalContent.appendChild(modalImage);
+
+  const modalInfo = document.createElement('div');
+  modalInfo.classList.add('modal-content__info');
+  modalContent.appendChild(modalInfo);
+
+  const modalDescription = document.createElement('div');
+  modalDescription.classList.add('modal-content__description');
+  modalInfo.appendChild(modalDescription);
+
+  const title = document.createElement('h4');
+  title.innerText = image.title;
+  modalDescription.appendChild(title);
+
+  const description = document.createElement('p');
+  description.innerText = image.description;
+  modalDescription.appendChild(description);
+
+  const modalPawFives = document.createElement('div');
+  modalPawFives.classList.add('modal-content__paw-fives');
+  modalInfo.appendChild(modalPawFives);
+
+  const pawImg = document.createElement('img');
+  pawImg.src = './assets/images/logo-line.png';
+  modalPawFives.appendChild(pawImg);
+
+  const pawCounts = document.createElement('div');
+  pawCounts.innerHTML = 1234 + '<br />Paw-fives';
+  modalPawFives.appendChild(pawCounts);
+
   // Hide Modal
   modalContainer.addEventListener('click', e => {
-    e.stopPropagation();
-
-    modalContainer.classList.remove('grid__modal--show');
-
-    const parentPos = itemContainer.getBoundingClientRect();
-    modalContainer.style.top = parentPos.top + 'px';
-    modalContainer.style.left = parentPos.left + 'px';
-    modalContainer.style.width = parentPos.width + 'px';
-    modalContainer.style.height = parentPos.height + 'px';
-
-    /**
-     * Add d-none after transition is complete
-     * time must be same as the transition time
-     */
-    setTimeout(() => {
-      modalContainer.classList.add('d-none');
-    }, 500);
+    closeModal(e, itemContainer, modalContainer);
+  });
+  closeModalBtn.addEventListener('click', e => {
+    closeModal(e, itemContainer, modalContainer);
   });
 }
 
@@ -145,7 +195,7 @@ function renderImages() {
     overlay.appendChild(removeBtn);
 
     // Create Modal
-    setTimeout(() => createModal(itemContainer), 0);
+    setTimeout(() => createModal(image, itemContainer), 0);
 
     // Show Modal
     itemContainer.addEventListener('click', () => {
