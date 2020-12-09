@@ -48,8 +48,6 @@ function getDeleteConfirmation(cb) {
 }
 
 function checkUserId(id) {
-  console.log('id:', id);
-
   if (id / 10 <= 1) {
     // singal digit
     if (id === 7) {
@@ -70,6 +68,8 @@ function checkUserId(id) {
 }
 
 function uploadImage() {
+  let isImageUploaded = false;
+
   const upload = document.querySelector('#upload');
   const error = upload.querySelector('.form__error');
   const closeBtn = upload.querySelector('.upload__close');
@@ -112,33 +112,51 @@ function uploadImage() {
     imgInput.click();
   });
 
+  // Render image in Preview
   imgInput.addEventListener('change', () => {
     if (imgInput.files && imgInput.files[0]) {
+      const file = imgInput.files[0];
       const reader = new FileReader();
 
-      reader.onload = function () {
-        const result = reader.result;
+      // check file is image or not
+      if (file.type.split('/')[0] !== 'image') {
+        error.innerText = 'Please upload an image';
+        error.classList.remove('v-hidden');
+        return;
+      }
 
-        // check file is image or not
+      // Uploaded file is image
+      reader.onload = function () {
+        // result is base64 string
+        const result = reader.result;
 
         imgPreview.src = result;
         imgPreview.classList.remove('d-none');
+        isImageUploaded = true;
       };
 
-      reader.readAsDataURL(imgInput.files[0]);
+      reader.readAsDataURL(file);
     }
   });
 
+  // Form submit
   upload.addEventListener('submit', e => {
     e.preventDefault();
 
+    if (!isImageUploaded) {
+      error.innerText = 'Please upload an image';
+      error.classList.remove('v-hidden');
+      return;
+    }
+
+    // Check userId
     if (!checkUserId(parseInt(secretId.value, 10))) {
-      // invalid userId
       error.innerText = 'Invalid user Id';
       error.classList.remove('v-hidden');
       return;
     }
 
     // Save image
+    console.log('Save image');
   });
 }
