@@ -102,8 +102,16 @@ function createModal(image, itemContainer) {
   modalDescription.appendChild(title);
 
   const description = document.createElement('p');
+  description.classList.add('v-hidden');
   description.innerText = image.description;
   modalDescription.appendChild(description);
+
+  // Toggle description
+  title.addEventListener('click', e => {
+    if (e.target === e.currentTarget) {
+      description.classList.toggle('v-hidden');
+    }
+  });
 
   const modalPawFives = document.createElement('div');
   modalPawFives.classList.add('modal-content__paw-fives');

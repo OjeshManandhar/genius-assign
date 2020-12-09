@@ -157,6 +157,10 @@
   border-bottom: 2px solid var(--input-border);
 }
 
+.modal-content__description h4 {
+  cursor: pointer;
+}
+
 .modal-content__description p {
   margin-top: 0.5rem;
 }
