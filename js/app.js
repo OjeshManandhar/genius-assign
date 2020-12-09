@@ -15,9 +15,7 @@ navInput.addEventListener('input', () => {
 // Upload
 const uploadBtn = document.querySelector('.nav .btn');
 
-uploadBtn.addEventListener('click', () => {
-  uploadImage();
-});
+uploadBtn.addEventListener('click', uploadImage);
 
 // Image Grid
 const images = [

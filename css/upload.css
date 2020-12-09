@@ -141,6 +141,8 @@
   width: 100%;
   height: 100%;
 
+  z-index: var(--preview-image);
+
   object-fit: cover;
 }
 
