@@ -1,0 +1,25 @@
+.message {
+  min-width: 32rem;
+  max-width: 32rem;
+
+  padding: 2rem;
+
+  color: var(--black);
+
+  opacity: inherit;
+
+  border-radius: 1rem;
+  background-color: var(--light-bg);
+}
+
+.message p {
+  font-size: 2rem;
+  text-align: center;
+
+  margin-bottom: 2rem;
+}
+
+.message button {
+  margin: auto;
+  font-size: 1.5rem;
+}

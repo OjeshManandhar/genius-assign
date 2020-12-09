@@ -1,3 +1,22 @@
+// Showing message
+function showMessageModal(msg, hideModal) {
+  const modal = document.querySelector('#messageModal');
+  const message = modal.querySelector('.message p');
+  const btn = modal.querySelector('.message button');
+
+  function btnClickHandler() {
+    // Hide modal
+    modal.classList.remove('modal--show');
+    message.innerHTML = '';
+    hideModal();
+    btn.removeEventListener('click', btnClickHandler);
+  }
+
+  modal.classList.add('modal--show');
+  message.innerHTML = msg;
+  btn.addEventListener('click', btnClickHandler);
+}
+
 // For delete confirmation
 function deleteImage(image, cb) {
   const confirm = document.querySelector('#confirmation');
@@ -15,14 +34,12 @@ function deleteImage(image, cb) {
 
   function handleKeydown(e) {
     if (e.key === 'Escape') {
-      cb(null);
       hideModal();
     }
   }
 
   function handleModalClick(e) {
     if (e.target === e.currentTarget) {
-      cb(null);
       hideModal();
     }
   }
@@ -34,16 +51,13 @@ function deleteImage(image, cb) {
       puppyDB.puppies
         .delete(image.id)
         .then(() => {
-          cb(true);
-          hideModal();
+          cb(true, hideModal);
         })
         .catch(err => {
           console.log('Delete err:', err);
-          cb(false);
-          hideModal();
+          cb(false, hideModal);
         });
     } else if (targetId === btnFalse.id) {
-      cb(null);
       hideModal();
     }
   }
@@ -196,14 +210,12 @@ function uploadImage(cb) {
         description: imageDetail.description
       })
       .then(() => {
-        hideModal();
-        cb(true);
+        cb(true, hideModal);
       })
       .catch(err => {
         console.log('add err:', err);
 
-        hideModal();
-        cb(false);
+        cb(false, hideModal);
       });
   });
 }

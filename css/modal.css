@@ -28,3 +28,7 @@
   opacity: 1;
   z-index: var(--modal);
 }
+
+.modal--show.modal--message {
+  z-index: var(--message);
+}

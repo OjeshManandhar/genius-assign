@@ -16,11 +16,11 @@ navInput.addEventListener('input', () => {
 const uploadBtn = document.querySelector('.nav .btn');
 
 uploadBtn.addEventListener('click', () =>
-  uploadImage(result => {
+  uploadImage((result, hideModal) => {
     if (result) {
-      window.alert("Your dog's photo has been uploaded");
+      showMessageModal("Your dog's photo has been uploaded", hideModal);
     } else {
-      window.alert("couldn't upload your dog's image");
+      showMessageModal("couldn't upload your dog's image", hideModal);
     }
 
     renderImages();
@@ -174,11 +174,11 @@ function renderImages() {
         removeBtn.addEventListener('click', e => {
           e.stopPropagation();
 
-          deleteImage(image, result => {
+          deleteImage(image, (result, hideModal) => {
             if (result) {
-              window.alert('Image deleted');
+              showMessageModal('Image deleted', hideModal);
             } else if (result === false) {
-              window.alert("Couldn't delete image");
+              showMessageModal("Couldn't delete image", hideModal);
             }
 
             renderImages();
