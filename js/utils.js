@@ -138,6 +138,7 @@ function uploadImage(cb) {
     error.classList.add('v-hidden');
 
     upload.classList.remove('modal--show');
+    upload.querySelector('form').reset();
 
     upload.removeEventListener('click', handleModalClick);
     document.removeEventListener('keydown', handleKeydown);
@@ -218,8 +219,6 @@ function uploadImage(cb) {
     // Save image
     imageDetail.title = title.value;
     imageDetail.description = description.value;
-    upload.querySelector('form').reset();
-
     puppyDB.puppies
       .add({
         src: imageDetail.src,

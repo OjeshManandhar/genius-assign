@@ -146,7 +146,7 @@ function renderImages() {
     .toArray()
     .then(images => {
       if (images.length === 0) {
-        showMessage('No posts');
+        showMessage('No posts. Upload some images.');
         return;
       }
 
