@@ -133,6 +133,7 @@
 .modal-content__img {
   width: 100%;
   height: auto;
+  max-height: 20rem;
 }
 
 .modal-content__info {
@@ -249,6 +250,10 @@
   .modal-content {
     min-width: 50rem;
     max-width: 50rem;
+  }
+
+  .modal-content__img {
+    max-height: 30rem;
   }
 
   .modal-content__info {
