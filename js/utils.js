@@ -67,9 +67,7 @@ function deleteImage(image, cb) {
     if (targetId === btnTrue.id) {
       puppyDB.puppies
         .delete(image.id)
-        .then(() => {
-          cb(true, hideModal);
-        })
+        .then(() => cb(true, hideModal))
         .catch(err => {
           console.log('Delete err:', err);
           cb(false, hideModal);
@@ -165,12 +163,10 @@ function uploadImage(cb) {
   closeBtn.addEventListener('click', handleModalClick);
 
   // For selecting image
-  uploadImageBtn.addEventListener('click', () => {
-    imgInput.click();
-  });
+  uploadImageBtn.onclick = () => imgInput.click();
 
   // Render image in Preview
-  imgInput.addEventListener('change', () => {
+  imgInput.onchange = () => {
     if (imgInput.files && imgInput.files[0]) {
       const file = imgInput.files[0];
       const reader = new FileReader();
@@ -197,12 +193,13 @@ function uploadImage(cb) {
 
       reader.readAsDataURL(file);
     }
-  });
+  };
 
   // Form submit
-  upload.addEventListener('submit', e => {
+  upload.onsubmit = e => {
     e.preventDefault();
 
+    // Check image
     if (!isImageUploaded) {
       error.innerText = 'Please upload an image';
       error.classList.remove('v-hidden');
@@ -225,13 +222,11 @@ function uploadImage(cb) {
         title: imageDetail.title,
         description: imageDetail.description
       })
-      .then(() => {
-        cb(true, hideModal);
-      })
+      .then(() => cb(true, hideModal))
       .catch(err => {
         console.log('add err:', err);
 
         cb(false, hideModal);
       });
-  });
+  };
 }
