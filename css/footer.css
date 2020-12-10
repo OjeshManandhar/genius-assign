@@ -58,10 +58,10 @@
   }
 
   .footer__nav-item + .footer__nav-item::before {
-    content: '\00B7';
+    content: '•';
     padding: 0 1.5rem;
 
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 800;
   }
 }

@@ -41,6 +41,7 @@
 }
 
 .grid__item-container {
+  height: auto;
   cursor: pointer;
 }
 
@@ -241,6 +242,10 @@
     grid-template-columns: 1fr 1fr;
   }
 
+  .grid__item-container {
+    height: 20rem;
+  }
+
   .modal-content {
     min-width: 50rem;
     max-width: 50rem;
@@ -270,6 +275,9 @@
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
+  .grid__item-container {
+    height: 27rem;
+  }
 }
 
 /* Large devices (desktops, 992px and up) */
@@ -277,8 +285,15 @@
   .grid {
     grid-template-columns: 1fr 1fr 1fr;
   }
+
+  .grid__item-container {
+    height: 25rem;
+  }
 }
 
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
+  .grid__item-container {
+    height: 27rem;
+  }
 }
