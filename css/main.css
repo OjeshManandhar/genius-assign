@@ -80,6 +80,12 @@
   background-color: var(--black-50);
 
   transition: opacity 300ms ease;
+
+  pointer-events: none;
+}
+
+.grid__overlay span {
+  pointer-events: auto;
 }
 
 .grid__modal {
@@ -94,14 +100,18 @@
 
   z-index: var(--z-0);
 
+  overflow: hidden;
+
   transition: all 500ms ease;
 
-  overflow: hidden;
+  pointer-events: none;
 }
 
 .grid__modal--show {
   opacity: 1;
   z-index: var(--item-modal);
+
+  pointer-events: auto;
 }
 
 .modal-content {

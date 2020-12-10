@@ -47,26 +47,18 @@ function showMessage(msg) {
 function closeModal(e, item, modal) {
   e.stopPropagation();
 
-  modal.classList.remove('grid__modal--show');
-
   const parentPos = item.getBoundingClientRect();
   modal.style.top = parentPos.top + 'px';
   modal.style.left = parentPos.left + 'px';
   modal.style.width = parentPos.width + 'px';
   modal.style.height = parentPos.height + 'px';
 
-  /**
-   * Add d-none after transition is complete
-   * time must be same as the transition time
-   */
-  setTimeout(() => {
-    modal.classList.add('d-none');
-  }, 500);
+  modal.classList.remove('grid__modal--show');
 }
 
 function createModal(image, itemContainer) {
   const modalContainer = document.createElement('div');
-  modalContainer.classList.add('grid__modal', 'd-none');
+  modalContainer.classList.add('grid__modal');
   itemContainer.appendChild(modalContainer);
 
   const parentPos = itemContainer.getBoundingClientRect();
@@ -203,16 +195,12 @@ function renderImages() {
         itemContainer.addEventListener('click', () => {
           const modal = itemContainer.querySelector('.grid__modal');
 
-          modal.classList.remove('d-none');
+          modal.style.top = 0;
+          modal.style.left = 0;
+          modal.style.width = '100%';
+          modal.style.height = '100%';
 
-          setTimeout(() => {
-            modal.classList.add('grid__modal--show');
-
-            modal.style.top = 0;
-            modal.style.left = 0;
-            modal.style.width = '100%';
-            modal.style.height = '100%';
-          }, 0);
+          modal.classList.add('grid__modal--show');
         });
       });
     })
